@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExpressServiceCL | Motores y Accesorios Automotrices en Chile</title>
+<meta name="description" content="ExpressServiceCL: venta de motores diésel, motores a gasolina, sistemas hidráulicos y de transmisión en Chile. Conoce cómo pagar, nuestro forum de pago, garantías y despacho a todo el país.">
+<meta name="keywords" content="motores diésel Chile, motores a gasolina, sistemas hidráulicos, sistemas de transmisión, repuestos automotrices, pagar, forum de pago, ExpressServiceCL">
+<meta name="author" content="ExpressServiceCL">
+<meta property="og:title" content="ExpressServiceCL | Motores y Accesorios Automotrices">
+<meta property="og:description" content="Venta de motores y accesorios automotrices en Chile. Revisa nuestro catálogo, forum de pago y políticas de garantía.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoPartsStore",
+  "name": "ExpressServiceCL",
+  "description": "Venta de motores diésel, motores a gasolina, sistemas hidráulicos y sistemas de transmisión para vehículos en Chile.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Vicuña Mackenna 4860, Local 12",
+    "addressLocality": "San Joaquín",
+    "addressRegion": "Región Metropolitana",
+    "postalCode": "8940000",
+    "addressCountry": "CL"
+  },
+  "telephone": "+56223456780",
+  "email": "contacto@expressservicecl.cl",
+  "openingHours": "Mo-Fr 09:00-18:30, Sa 09:00-14:00",
+  "priceRange": "$$",
+  "areaServed": "CL",
+  "currenciesAccepted": "CLP",
+  "paymentAccepted": "Transferencia bancaria, Tarjeta de crédito, Tarjeta de débito, WebPay"
+}
+</script>
+<style>
+  :root{
+    --ink:#10151a;
+    --ink-soft:#3c454d;
+    --bg:#f6f7f5;
+    --bg-panel:#ffffff;
+    --bg-deep:#0d1013;
+    --line:#dcded9;
+    --line-soft:#e8e9e5;
+    --orange:#ff5a1f;
+    --orange-deep:#d8480f;
+    --teal:#0c5c6b;
+    --teal-soft:#e4eef0;
+    --amber:#c98a1a;
+    --text-dim:#65707a;
+    --text-inverse:#eef1f0;
+    --text-inverse-dim:#a7b0b6;
+    --radius:6px;
+    --radius-sm:3px;
+    --display:-apple-system, BlinkMacSystemFont, 'Segoe UI Semibold', Roboto, Helvetica, Arial, sans-serif;
+    --body:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono:'Roboto Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    --maxw:1180px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+  }
+  body{
+    margin:0;
+    font-family:var(--body);
+    background:var(--bg);
+    color:var(--ink-soft);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    font-size:16px;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  h1,h2,h3,h4{
+    font-family:var(--display);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  h2{ font-size:clamp(1.6rem,3.2vw,2.15rem); letter-spacing:-0.02em; }
+  h3{ font-size:1.05rem; }
+  p{ margin:0 0 1em; }
+  .container{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+  .visually-hidden{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  a.skip-link{ position:absolute; left:-999px; top:0; background:var(--orange); color:#fff; padding:12px 18px; z-index:1000; font-weight:600; border-radius:0 0 6px 0; }
+  a.skip-link:focus{ left:0; top:0; }
+  :focus-visible{ outline:2.5px solid var(--orange); outline-offset:2px; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); text-transform:uppercase; letter-spacing:.12em; font-size:.72rem;
+    color:var(--orange-deep); margin-bottom:14px; font-weight:600;
+  }
+  .eyebrow::before{ content:""; width:16px; height:2px; background:var(--orange); display:inline-block; }
+  .section-intro{ max-width:62ch; color:var(--text-dim); }
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(246,247,245,.86);
+    backdrop-filter:saturate(160%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{ display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:var(--maxw); margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:800; font-size:1.18rem; color:var(--ink); text-decoration:none; letter-spacing:-0.01em; }
+  .logo svg{ width:30px; height:30px; flex-shrink:0; }
+  .logo .brand-cl{ color:var(--orange); }
+  nav.main-nav ul{ list-style:none; display:flex; gap:4px; margin:0; padding:0; }
+  nav.main-nav a{
+    position:relative; display:block; padding:9px 14px; color:var(--ink-soft); text-decoration:none;
+    font-size:.92rem; font-weight:500;
+  }
+  nav.main-nav a::after{
+    content:""; position:absolute; left:14px; right:14px; bottom:4px; height:2px; background:var(--orange);
+    transform:scaleX(0); transform-origin:left; transition:transform .2s ease;
+  }
+  nav.main-nav a:hover::after, nav.main-nav a:focus-visible::after{ transform:scaleX(1); }
+  nav.main-nav a:hover, nav.main-nav a:focus-visible{ color:var(--ink); }
+  .nav-cta{
+    background:var(--ink); color:#fff !important; border-radius:var(--radius-sm); padding:9px 16px !important; font-weight:600 !important;
+  }
+  .nav-cta::after{ display:none; }
+  .nav-cta:hover{ background:var(--orange-deep); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); color:var(--ink); padding:8px 12px; font-size:.95rem; cursor:pointer; border-radius:var(--radius-sm); font-weight:600; }
+  @media (max-width:900px){
+    .nav-toggle{ display:block; }
+    nav.main-nav{ position:absolute; top:100%; left:0; right:0; background:var(--bg-panel); max-height:0; overflow:hidden; transition:max-height .25s ease; border-bottom:1px solid var(--line); box-shadow:0 12px 24px -12px rgba(0,0,0,.15); }
+    nav.main-nav.open{ max-height:520px; }
+    nav.main-nav ul{ flex-direction:column; padding:10px 28px 22px; gap:0; }
+    nav.main-nav a{ padding:13px 4px; border-bottom:1px solid var(--line-soft); }
+    nav.main-nav a::after{ display:none; }
+    .nav-cta{ margin-top:10px; text-align:center; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ background:var(--bg); padding:76px 0 84px; position:relative; overflow:hidden; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; }
+  .hero h1{ font-size:clamp(2.2rem,4.6vw,3.35rem); line-height:1.05; margin-bottom:20px; }
+  .hero h1 em{ font-style:normal; color:var(--orange); }
+  .hero p.lead{ font-size:1.08rem; max-width:48ch; margin-bottom:30px; color:var(--text-dim); }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px; }
+  .hero-trust{ display:flex; gap:28px; flex-wrap:wrap; }
+  .hero-trust div{ font-family:var(--mono); }
+  .hero-trust strong{ display:block; font-size:1.5rem; font-family:var(--display); color:var(--ink); }
+  .hero-trust span{ font-size:.76rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em; }
+
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:600; padding:13px 24px; text-decoration:none; border-radius:var(--radius-sm); border:1.5px solid transparent; cursor:pointer; font-size:.95rem; transition:transform .12s ease, background .15s ease, border-color .15s ease, color .15s ease; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--orange); color:#fff; }
+  .btn-primary:hover{ background:var(--orange-deep); }
+  .btn-outline{ border-color:var(--line); color:var(--ink); background:var(--bg-panel); }
+  .btn-outline:hover{ border-color:var(--ink); }
+
+  /* torque-curve panel (elemento firma) */
+  .curve-panel{ background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius); padding:22px 22px 8px; box-shadow:0 24px 48px -28px rgba(16,21,26,.28); }
+  .curve-panel-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .curve-panel-head span:first-child{ font-family:var(--mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); }
+  .curve-panel-head span:last-child{ font-family:var(--mono); font-size:.72rem; color:var(--orange-deep); font-weight:600; }
+  .curve-draw{ stroke-dasharray:520; stroke-dashoffset:520; animation:draw 2.2s ease forwards .3s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .curve-legend{ display:flex; gap:18px; padding:10px 2px 16px; font-family:var(--mono); font-size:.72rem; color:var(--text-dim); }
+  .curve-legend i{ display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px; vertical-align:-1px; }
+
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Sections ---------- */
+  section{ padding:80px 0; }
+  .section-deep{ background:var(--bg-deep); color:var(--text-inverse); }
+  .section-deep h2{ color:var(--text-inverse); }
+  .section-deep .section-intro{ color:var(--text-inverse-dim); }
+  .section-panel{ background:var(--bg-panel); }
+
+  /* Nosotros */
+  .about-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:start; }
+  .stat-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:8px; }
+  .stat-strip div{ background:var(--bg-panel); padding:20px 18px; }
+  .stat-strip strong{ display:block; font-size:1.7rem; font-family:var(--display); color:var(--ink); }
+  .stat-strip span{ font-size:.76rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.05em; }
+  .badge-verified{ display:inline-flex; align-items:center; gap:7px; font-family:var(--mono); font-size:.78rem; color:var(--teal); background:var(--teal-soft); border:1px solid #bcd9dd; padding:6px 12px; border-radius:20px; margin-top:20px; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } .stat-strip{ grid-template-columns:1fr 1fr 1fr; } }
+
+  /* Mision/vision */
+  .mv-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  .mv-card{ background:var(--bg-panel); padding:36px 34px; position:relative; }
+  .mv-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange); }
+  .mv-card:nth-child(2)::before{ background:var(--teal); }
+  .mv-card h3{ font-size:1.2rem; text-transform:uppercase; letter-spacing:.04em; }
+  @media (max-width:780px){ .mv-grid{ grid-template-columns:1fr; } }
+
+  /* Catalogo */
+  .catalog-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:20px; margin-top:36px; }
+  .spec-card{ background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius); padding:26px 24px 22px; transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .spec-card:hover{ border-color:var(--orange); box-shadow:0 18px 32px -22px rgba(16,21,26,.35); transform:translateY(-3px); }
+  .spec-icon{ width:40px; height:40px; margin-bottom:16px; color:var(--orange); }
+  .spec-card h3{ margin-bottom:8px; }
+  .spec-card p{ font-size:.93rem; color:var(--text-dim); margin-bottom:16px; }
+  .spec-code{ font-family:var(--mono); font-size:.76rem; color:var(--text-dim); border-top:1px solid var(--line-soft); padding-top:12px; display:flex; justify-content:space-between; }
+  .spec-code b{ color:var(--teal); font-weight:600; }
+
+  /* Forum de pago */
+  .pay-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:44px; margin-top:24px; }
+  .pay-list{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .pay-list li{ display:flex; gap:14px; align-items:flex-start; background:#161a1e; border:1px solid #262b31; padding:17px 18px; border-radius:var(--radius); }
+  .pay-list svg{ width:24px; height:24px; flex-shrink:0; color:var(--orange); margin-top:2px; }
+  .pay-list strong{ color:var(--text-inverse); display:block; margin-bottom:2px; }
+  .pay-list p{ margin:0; color:var(--text-inverse-dim); font-size:.9rem; }
+  .pay-note{ background:#161a1e; border:1px solid #262b31; padding:26px; border-radius:var(--radius); font-size:.92rem; color:var(--text-inverse-dim); }
+  .pay-note h3{ color:var(--text-inverse); font-size:1rem; text-transform:uppercase; letter-spacing:.04em; }
+  @media (max-width:900px){ .pay-grid{ grid-template-columns:1fr; } }
+
+  /* Politicas */
+  .policy-block{ border-top:1px solid var(--line); padding:30px 0; }
+  .policy-block:last-child{ border-bottom:1px solid var(--line); }
+  .policy-block h3{ font-size:1.12rem; display:flex; align-items:baseline; gap:12px; }
+  .policy-block h3 .num{ font-family:var(--mono); color:var(--orange-deep); font-weight:700; }
+  .policy-block ul{ margin:0 0 1em 1.15em; padding:0; }
+  .policy-block li{ margin-bottom:6px; }
+
+  /* FAQ */
+  details.faq-item{ border-bottom:1px solid var(--line); padding:18px 0; }
+  details.faq-item summary{ cursor:pointer; font-weight:600; font-size:1rem; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  details.faq-item summary::-webkit-details-marker{ display:none; }
+  details.faq-item summary::after{ content:"+"; font-family:var(--mono); font-size:1.3rem; color:var(--orange); flex-shrink:0; }
+  details.faq-item[open] summary::after{ content:"−"; }
+  details.faq-item p{ margin-top:12px; color:var(--text-dim); max-width:70ch; }
+
+  /* Contacto */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-top:24px; }
+  .contact-info dl{ margin:0; }
+  .contact-info dt{ font-family:var(--mono); text-transform:uppercase; font-size:.72rem; color:var(--orange); letter-spacing:.06em; margin-top:18px; font-weight:600; }
+  .contact-info dd{ margin:3px 0 0; color:var(--text-inverse-dim); }
+  .social-row{ display:flex; gap:12px; margin-top:22px; }
+  .social-row a{ width:38px; height:38px; border:1px solid #333940; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; color:var(--text-inverse); }
+  .social-row a:hover{ border-color:var(--orange); color:var(--orange); }
+  .social-row svg{ width:17px; height:17px; }
+  .map-frame{ border:1px solid #262b31; border-radius:var(--radius); overflow:hidden; height:100%; min-height:320px; display:flex; flex-direction:column; }
+  .map-illustration{ width:100%; height:100%; min-height:280px; display:block; flex:1; }
+  .map-link{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    background:#161a1e; border-top:1px solid #262b31; color:var(--text-inverse);
+    text-decoration:none; font-size:.86rem; font-weight:600; padding:13px 16px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .map-link:hover{ background:#1e2329; color:var(--orange); }
+
+  /* Formulario de asesoría de créditos */
+  .credit-panel{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:34px 32px; margin-top:8px;
+  }
+  .credit-form{ display:grid; grid-template-columns:1fr 1fr; gap:18px 20px; margin-top:24px; }
+  .form-row{ display:flex; flex-direction:column; gap:6px; }
+  .form-row-full{ grid-column:1 / -1; }
+  .form-row label{ font-size:.82rem; font-weight:600; color:var(--ink); }
+  .form-row input, .form-row textarea{
+    font:inherit; padding:11px 13px; border:1.5px solid var(--line); border-radius:var(--radius-sm);
+    background:var(--bg); color:var(--ink); resize:vertical;
+  }
+  .form-row input:focus, .form-row textarea:focus{ border-color:var(--orange); outline:none; }
+  .form-hint{ margin:12px 0 0; font-size:.84rem; color:var(--text-dim); }
+  .form-confirm{
+    margin-top:18px; padding:14px 16px; background:var(--teal-soft); border:1px solid #bcd9dd;
+    border-radius:var(--radius-sm); color:var(--teal); font-size:.92rem; font-weight:600;
+  }
+  @media (max-width:640px){ .credit-form{ grid-template-columns:1fr; } }
+  @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* Footer */
+  footer.site-footer{ background:#0a0d0f; color:var(--text-inverse-dim); padding:54px 0 26px; font-size:.9rem; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; }
+  .footer-grid h4{ color:var(--text-inverse); font-size:.85rem; margin-bottom:14px; text-transform:uppercase; letter-spacing:.05em; }
+  .footer-grid ul{ list-style:none; margin:0; padding:0; }
+  .footer-grid li{ margin-bottom:8px; }
+  .footer-grid a{ text-decoration:none; color:var(--text-inverse-dim); }
+  .footer-grid a:hover{ color:var(--orange); }
+  .footer-bottom{ margin-top:42px; padding-top:20px; border-top:1px solid #1c2024; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.8rem; color:#5c646b; font-family:var(--mono); }
+  @media (max-width:780px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="#inicio" class="logo" aria-label="ExpressServiceCL, inicio">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M4 22V12l6-6h10l8 8v8" stroke="#ff5a1f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M4 22h24M9 22v3M23 22v3" stroke="#10151a" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="14" r="3" stroke="#10151a" stroke-width="2"/>
+      </svg>
+      Express<span class="brand-cl">Service</span>CL
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" id="navToggle">Menú</button>
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#catalogo">Productos</a></li>
+        <li><a href="#forum-de-pago">Política de Pago</a></li>
+        <li><a href="#preguntas-frecuentes">Preguntas Frecuentes</a></li>
+        <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Motores &amp; accesorios automotrices — Chile</span>
+        <h1>Motores que <em>rinden</em>.<br>Datos que <em>respaldan</em>.</h1>
+        <p class="lead">En ExpressServiceCL vendemos motores diésel y a gasolina, sistemas hidráulicos y de transmisión, con la ficha técnica completa a la vista para que decidas con información real, no con promesas.</p>
+        <div class="hero-actions">
+          <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+          <a href="#contacto" class="btn btn-outline">Contáctanos</a>
+        </div>
+        <div class="hero-trust">
+          <div><strong>+1.200</strong><span>Componentes catalogados</span></div>
+          <div><strong>16</strong><span>Regiones con despacho</span></div>
+          <div><strong>90 días</strong><span>Garantía en reacondicionados</span></div>
+        </div>
+      </div>
+
+      <div class="curve-panel reveal">
+        <div class="curve-panel-head">
+          <span>Curva de torque — referencia</span>
+          <span>Nm / RPM</span>
+        </div>
+        <svg viewBox="0 0 400 200" width="100%" height="200" role="img" aria-label="Gráfico ilustrativo de curva de torque en función de las revoluciones por minuto">
+          <line x1="30" y1="10" x2="30" y2="170" stroke="#dcded9" stroke-width="1"/>
+          <line x1="30" y1="170" x2="390" y2="170" stroke="#dcded9" stroke-width="1"/>
+          <line x1="30" y1="130" x2="390" y2="130" stroke="#eceeea" stroke-width="1"/>
+          <line x1="30" y1="90" x2="390" y2="90" stroke="#eceeea" stroke-width="1"/>
+          <line x1="30" y1="50" x2="390" y2="50" stroke="#eceeea" stroke-width="1"/>
+          <path class="curve-draw" d="M30 160 C 90 150, 120 60, 190 42 C 250 30, 300 55, 385 95"
+                fill="none" stroke="#ff5a1f" stroke-width="3" stroke-linecap="round"/>
+          <path d="M30 160 C 100 158, 200 150, 385 135" fill="none" stroke="#0c5c6b" stroke-width="2" stroke-dasharray="4 5" opacity=".8"/>
+          <text x="30" y="188" font-family="Roboto Mono, monospace" font-size="9" fill="#65707a">0</text>
+          <text x="370" y="188" font-family="Roboto Mono, monospace" font-size="9" fill="#65707a">RPM</text>
+        </svg>
+        <div class="curve-legend">
+          <span><i style="background:#ff5a1f;"></i>Motor diésel</span>
+          <span><i style="background:#0c5c6b;"></i>Motor a gasolina</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="section-panel">
+    <div class="container about-grid reveal">
+      <div>
+        <span class="eyebrow">Quiénes somos</span>
+        <h2>Especialistas en motores desde el taller, no desde la vitrina</h2>
+        <p>ExpressServiceCL nació de la experiencia directa con talleres mecánicos y flotas de transporte en la Región Metropolitana. En 2026 seguimos con el mismo enfoque: motores y accesorios automotrices con información técnica verificable, para que cada compra —un motor diésel completo o un componente de transmisión— se decida con datos claros.</p>
+        <p>Trabajamos con proveedores evaluados y mantenemos un proceso de revisión técnica antes de publicar cualquier producto en nuestro catálogo. No vendemos lo que no podemos respaldar con información concreta.</p>
+        <span class="badge-verified">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Fichas técnicas verificadas por nuestro equipo
+        </span>
+      </div>
+      <div>
+        <div class="stat-strip">
+          <div><strong>2026</strong><span>Año de operación</span></div>
+          <div><strong>09–18:30</strong><span>Horario L–V</span></div>
+          <div><strong>CLP</strong><span>Precios con IVA</span></div>
+        </div>
+        <p style="margin-top:24px;">Nuestro equipo técnico revisa ficha por ficha antes de publicarla: origen, compatibilidad y condición del producto, para que la decisión de compra sea tuya, con la información completa a la vista.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISION / VISION -->
+  <section aria-label="Misión y visión de ExpressServiceCL">
+    <div class="container reveal">
+      <div class="mv-grid">
+        <div class="mv-card">
+          <h3>Misión</h3>
+          <p>Facilitar el acceso a motores y accesorios automotrices de origen verificable en todo Chile, entregando información técnica precisa y un proceso de compra transparente, de modo que talleres, transportistas y conductores particulares puedan mantener sus vehículos en funcionamiento sin sorpresas ni letra chica.</p>
+        </div>
+        <div class="mv-card">
+          <h3>Visión</h3>
+          <p>Ser, hacia 2030, un punto de referencia nacional en la venta de motores y componentes automotrices para quienes valoran la información técnica por sobre la publicidad, ampliando nuestra cobertura logística a todas las regiones de Chile continental y fortaleciendo nuestro respaldo post-venta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOGO -->
+  <section id="catalogo" class="section-panel">
+    <div class="container reveal">
+      <span class="eyebrow">Catálogo</span>
+      <h2 class="section-intro">Líneas de producto</h2>
+      <p class="section-intro">Cada ficha incluye compatibilidad, condición y procedencia. Si un dato no está disponible, lo indicamos como tal en lugar de completarlo con información no verificada.</p>
+
+      <div class="catalog-grid">
+        <article class="spec-card">
+          <svg class="spec-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="8" y="16" width="24" height="18" rx="2" stroke="currentColor" stroke-width="2.2"/><path d="M32 22h6v8h-6" stroke="currentColor" stroke-width="2.2"/><path d="M14 16v-4h12v4" stroke="currentColor" stroke-width="2.2"/><circle cx="16" cy="34" r="3" stroke="currentColor" stroke-width="2"/><circle cx="26" cy="34" r="3" stroke="currentColor" stroke-width="2"/></svg>
+          <h3>Motores diésel</h3>
+          <p>Motores diésel completos y semi-armados para vehículos livianos y de carga, con ficha de cilindrada, torque nominal y horas u kilometraje de uso cuando corresponde.</p>
+          <div class="spec-code"><span>DIESEL-SERIES</span><b>Stock disponible</b></div>
+        </article>
+
+        <article class="spec-card">
+          <svg class="spec-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2.2"/><path d="M24 14v4M24 30v4M14 24h4M30 24h4M17.5 17.5l2.8 2.8M27.7 27.7l2.8 2.8M30.5 17.5l-2.8 2.8M20.3 27.7l-2.8 2.8" stroke="currentColor" stroke-width="2"/></svg>
+          <h3>Motores a gasolina</h3>
+          <p>Motores a gasolina para autos y camionetas, con detalle de cilindrada, número de válvulas y compatibilidad por marca y modelo verificada contra catálogo del fabricante.</p>
+          <div class="spec-code"><span>GAS-SERIES</span><b>Stock disponible</b></div>
+        </article>
+
+        <article class="spec-card">
+          <svg class="spec-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="10" y="20" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="2.2"/><path d="M20 25h10M30 20v10M30 25a6 6 0 0 0 6-6" stroke="currentColor" stroke-width="2.2"/></svg>
+          <h3>Sistemas hidráulicos</h3>
+          <p>Bombas, mangueras de alta presión, cilindros y válvulas hidráulicas para maquinaria y vehículos de trabajo, con indicación de presión máxima de operación.</p>
+          <div class="spec-code"><span>HYD-SERIES</span><b>Sobre pedido</b></div>
+        </article>
+
+        <article class="spec-card">
+          <svg class="spec-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="16" cy="24" r="6" stroke="currentColor" stroke-width="2.2"/><circle cx="32" cy="24" r="6" stroke="currentColor" stroke-width="2.2"/><path d="M22 24h4" stroke="currentColor" stroke-width="2.2"/></svg>
+          <h3>Sistemas de transmisión</h3>
+          <p>Cajas de cambio manuales y automáticas, embragues, discos y componentes de transmisión, con ficha de compatibilidad por tracción y número de marchas.</p>
+          <div class="spec-code"><span>TRANS-SERIES</span><b>Stock disponible</b></div>
+        </article>
+
+        <article class="spec-card">
+          <svg class="spec-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 8l4 6 7-2 1 7 6 3-4 6 4 6-6 3-1 7-7-2-4 6-4-6-7 2-1-7-6-3 4-6-4-6 6-3 1-7 7 2z" stroke="currentColor" stroke-width="2"/></svg>
+          <h3>Repuestos y accesorios</h3>
+          <p>Filtros, correas, sensores, soportes de motor y otros componentes de mantención, seleccionados por compatibilidad directa y no por precio como único criterio.</p>
+          <div class="spec-code"><span>PARTS-SERIES</span><b>Stock disponible</b></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORUM DE PAGO -->
+  <section id="forum-de-pago" class="section-deep">
+    <div class="container reveal">
+      <span class="eyebrow">Cómo pagar</span>
+      <h2 class="section-intro">Forum de pago: medios y condiciones</h2>
+      <p class="section-intro">Reunimos aquí, en un solo forum de pago, toda la información que necesitas antes de pagar: qué medios aceptamos, en cuánto tiempo se confirma el pago y qué pasa después de pagar tu pedido.</p>
+
+      <div class="pay-grid">
+        <ul class="pay-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 10h20" stroke="currentColor" stroke-width="2"/></svg>
+            <div><strong>Tarjetas de crédito y débito</strong><p>Aceptamos Visa, Mastercard y Redcompra. El pago se confirma de inmediato al procesarse.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10h18M6 10V6a2 2 0 012-2h8a2 2 0 012 2v4M4 10h16v10a1 1 0 01-1 1H5a1 1 0 01-1-1V10z" stroke="currentColor" stroke-width="2"/></svg>
+            <div><strong>WebPay</strong><p>Pasarela de pago con validación en línea de Transbank, disponible para tarjetas nacionales.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M10 4v16" stroke="currentColor" stroke-width="2"/></svg>
+            <div><strong>Transferencia bancaria</strong><p>Los datos se envían por correo tras confirmar tu pedido. La confirmación de pago puede tardar hasta 1 día hábil.</p></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2"/></svg>
+            <div><strong>Pago en cuotas</strong><p>Disponible según la tarjeta emisora y sus condiciones. Las cuotas y su interés, si aplican, los define tu banco, no ExpressServiceCL.</p></div>
+          </li>
+        </ul>
+
+        <div class="pay-note">
+          <h3>Antes de pagar</h3>
+          <p>Recomendamos revisar la ficha técnica y confirmar disponibilidad con nuestro equipo antes de pagar, especialmente en motores y sistemas de transmisión sujetos a stock limitado.</p>
+          <p>Todos los precios publicados están en pesos chilenos (CLP), incluyen IVA y no cambian entre la cotización y el pago dentro del mismo día hábil.</p>
+          <p style="margin-bottom:0;">No solicitamos datos de tu tarjeta por correo, WhatsApp ni redes sociales. El pago solo se realiza a través de los medios listados en este forum de pago.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASESORÍA DE CRÉDITOS -->
+  <section id="asesoria-creditos" class="section-panel">
+    <div class="container reveal">
+      <span class="eyebrow">Créditos con ExpressServiceCL</span>
+      <h2 class="section-intro">Asesoría sobre tus créditos</h2>
+      <p class="section-intro">En ExpressServiceCL es muy importante que nuestros clientes tengan al día sus vehículos y sus deudas. Por eso, comunícate con un asesor para que te brindemos toda la información necesaria sobre tus créditos con nuestra empresa completando el siguiente formulario.</p>
+
+      <div class="credit-panel">
+        <form class="credit-form" id="creditForm" novalidate>
+          <div class="form-row">
+            <label for="cf-nombre">Nombre completo</label>
+            <input type="text" id="cf-nombre" name="nombre" autocomplete="name" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-rut">RUT</label>
+            <input type="text" id="cf-rut" name="rut" placeholder="12.345.678-9" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-telefono">Teléfono</label>
+            <input type="tel" id="cf-telefono" name="telefono" autocomplete="tel" required>
+          </div>
+          <div class="form-row">
+            <label for="cf-correo">Correo electrónico</label>
+            <input type="email" id="cf-correo" name="correo" autocomplete="email" required>
+          </div>
+          <div class="form-row form-row-full">
+            <label for="cf-mensaje">Cuéntanos tu consulta (opcional)</label>
+            <textarea id="cf-mensaje" name="mensaje" rows="3" placeholder="Ej: quiero saber el saldo pendiente de mi crédito por el motor N.° ..."></textarea>
+          </div>
+          <div class="form-row form-row-full">
+            <button type="submit" class="btn btn-primary">Solicitar asesoría</button>
+            <p class="form-hint">Un asesor de ExpressServiceCL te contactará dentro de 2 días hábiles al teléfono o correo indicado. También puedes escribirnos directamente a <a href="mailto:creditos@expressservicecl.cl" style="color:var(--orange-deep); font-weight:600;">creditos@expressservicecl.cl</a>.</p>
+          </div>
+        </form>
+        <p class="form-confirm" id="creditFormConfirm" role="status" hidden>Gracias. Preparamos tu solicitud en tu programa de correo: solo confírmala para enviarla a nuestro equipo de asesoría de créditos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLITICAS -->
+  <section id="politicas" class="section-panel">
+    <div class="container reveal">
+      <span class="eyebrow">Políticas</span>
+      <h2 class="section-intro">Privacidad, cambios, garantías y despacho</h2>
+
+      <div id="politica-de-privacidad" class="policy-block">
+        <h3><span class="num">01</span>Política de privacidad</h3>
+        <p>ExpressServiceCL recopila únicamente los datos necesarios para procesar tu compra y contactarte: nombre, correo electrónico, teléfono y dirección de despacho. No vendemos ni compartimos tus datos con terceros para fines publicitarios.</p>
+        <ul>
+          <li>Los datos de pago son procesados directamente por la pasarela correspondiente (Transbank u otra); ExpressServiceCL no almacena números de tarjeta.</li>
+          <li>Puedes solicitar la eliminación de tus datos personales escribiendo a contacto@expressservicecl.cl.</li>
+          <li>Usamos tu correo solo para confirmaciones de pedido, salvo que aceptes expresamente recibir información comercial.</li>
+        </ul>
+      </div>
+
+      <div id="politica-de-cambios-devoluciones-y-garantias" class="policy-block">
+        <h3><span class="num">02</span>Cambios, devoluciones y garantías</h3>
+        <p>Todo producto cuenta con la garantía legal establecida en la Ley del Consumidor de Chile. Además, aplicamos condiciones propias según el tipo de producto:</p>
+        <ul>
+          <li><strong>Repuestos y accesorios nuevos:</strong> cambio o devolución dentro de 10 días corridos desde la recepción, con el producto sin uso y su empaque original.</li>
+          <li><strong>Motores y componentes reacondicionados:</strong> garantía de 90 días por defectos de funcionamiento no informados en la ficha técnica, sujeta a revisión técnica del producto devuelto.</li>
+          <li><strong>Instalación:</strong> ExpressServiceCL vende el producto; la instalación en un taller de terceros no está cubierta por nuestra garantía, salvo convenio expreso.</li>
+        </ul>
+        <p>No ofrecemos garantía de por vida ni cobertura sobre daños derivados de una instalación incorrecta o uso fuera de las especificaciones indicadas en la ficha técnica.</p>
+      </div>
+
+      <div id="envios-cobertura-geografica" class="policy-block">
+        <h3><span class="num">03</span>Envíos y cobertura geográfica</h3>
+        <p>Despachamos a las 16 regiones de Chile continental a través de transportistas externos. Los plazos estimados son:</p>
+        <ul>
+          <li>Región Metropolitana: 1 a 3 días hábiles.</li>
+          <li>Regiones cercanas (V, VI, VII, VIII): 3 a 5 días hábiles.</li>
+          <li>Resto del país: 5 a 10 días hábiles, según disponibilidad del transportista.</li>
+        </ul>
+        <p>El costo de despacho depende del peso y volumen del producto (relevante en motores completos) y se calcula antes de confirmar el pago. No realizamos envíos internacionales por el momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas-frecuentes">
+    <div class="container reveal">
+      <span class="eyebrow">Dudas frecuentes</span>
+      <h2 class="section-intro">Preguntas frecuentes</h2>
+
+      <details class="faq-item">
+        <summary>¿Cómo puedo pagar mi pedido?</summary>
+        <p>Puedes pagar con tarjeta de crédito o débito, WebPay o transferencia bancaria. Revisa el detalle completo de cada medio en el forum de pago, más arriba en esta página.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Los motores son nuevos o usados?</summary>
+        <p>Vendemos ambas condiciones. Cada ficha técnica indica claramente si el motor es nuevo, reacondicionado o usado, junto con su procedencia y estado conocido.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Qué pasa si el motor no es compatible con mi vehículo?</summary>
+        <p>Antes de pagar, verificamos junto a ti la compatibilidad por marca, modelo y año. Si de todas formas ocurre un error de compatibilidad atribuible a la información entregada por nosotros, aplica la política de cambios descrita en Políticas.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Hacen despacho fuera de Santiago?</summary>
+        <p>Sí, despachamos a todo Chile continental. Los plazos varían según la región; puedes revisarlos en la sección de Envíos y Cobertura Geográfica.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Emiten factura o boleta?</summary>
+        <p>Emitimos boleta electrónica por defecto y factura para quienes lo soliciten con sus datos tributarios al momento de pagar.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section-deep">
+    <div class="container reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2 class="section-intro">Escríbenos o visítanos</h2>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <dl>
+            <dt>Dirección</dt>
+            <dd>Av. Vicuña Mackenna 4860, Local 12, San Joaquín, Santiago, Chile</dd>
+            <dt>Correo</dt>
+            <dd><a href="mailto:contacto@expressservicecl.cl">contacto@expressservicecl.cl</a></dd>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+56223456780">+56 2 2345 6780</a></dd>
+            <dt>WhatsApp</dt>
+            <dd><a href="tel:+56912345678">+56 9 1234 5678</a></dd>
+            <dt>Horario de atención</dt>
+            <dd>Lunes a viernes 09:00–18:30 · Sábado 09:00–14:00</dd>
+          </dl>
+          <div class="social-row">
+            <a href="#" aria-label="ExpressServiceCL en Instagram">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="#" aria-label="ExpressServiceCL en Facebook">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 9h3V6h-3a4 4 0 00-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 011-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#" aria-label="ExpressServiceCL en WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18l-1.4 4L9 20.5A9 9 0 106 18z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="map-frame">
+          <svg class="map-illustration" viewBox="0 0 400 320" role="img" aria-label="Mapa esquemático de la ubicación de ExpressServiceCL en San Joaquín, Santiago">
+            <rect x="0" y="0" width="400" height="320" fill="#12171b"/>
+            <g stroke="#242b31" stroke-width="1">
+              <line x1="0" y1="60" x2="400" y2="60"/>
+              <line x1="0" y1="130" x2="400" y2="130"/>
+              <line x1="0" y1="200" x2="400" y2="200"/>
+              <line x1="0" y1="260" x2="400" y2="260"/>
+              <line x1="70" y1="0" x2="70" y2="320"/>
+              <line x1="160" y1="0" x2="160" y2="320"/>
+              <line x1="250" y1="0" x2="250" y2="320"/>
+              <line x1="330" y1="0" x2="330" y2="320"/>
+            </g>
+            <path d="M0 168 C 90 150, 180 190, 260 150 S 360 120, 400 140" stroke="#3a4550" stroke-width="6" fill="none"/>
+            <path d="M120 0 C 140 80, 110 180, 150 320" stroke="#3a4550" stroke-width="5" fill="none"/>
+            <circle cx="200" cy="160" r="7" fill="#ff5a1f"/>
+            <path d="M200 160 m0 -24 a24 24 0 1 1 -0.1 0 z" fill="none" stroke="#ff5a1f" stroke-width="2.5" opacity=".55"/>
+            <rect x="140" y="118" width="120" height="26" rx="4" fill="#161a1e" stroke="#333940"/>
+            <text x="200" y="135" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="#eef1f0">ExpressServiceCL</text>
+          </svg>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=-33.4825,-70.6190" target="_blank" rel="noopener noreferrer">
+            Abrir ubicación en Google Maps
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#inicio" class="logo" style="margin-bottom:12px; color:var(--text-inverse);" aria-label="ExpressServiceCL, inicio">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="none" aria-hidden="true"><path d="M4 22V12l6-6h10l8 8v8" stroke="#ff5a1f" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="M4 22h24M9 22v3M23 22v3" stroke="#eef1f0" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="14" r="3" stroke="#eef1f0" stroke-width="2"/></svg>
+          Express<span class="brand-cl" style="color:#ff5a1f;">Service</span>CL
+        </a>
+        <p style="max-width:32ch;">Venta de motores y accesorios automotrices en Chile. Información técnica clara, sin promesas que no podamos respaldar.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#catalogo">Productos</a></li>
+          <li><a href="#forum-de-pago">Forum de pago</a></li>
+          <li><a href="#asesoria-creditos">Asesoría de créditos</a></li>
+          <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#politica-de-privacidad">Privacidad</a></li>
+          <li><a href="#politica-de-cambios-devoluciones-y-garantias">Cambios y garantías</a></li>
+          <li><a href="#envios-cobertura-geografica">Envíos y cobertura</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <ul>
+          <li>RUT: 76.543.210-K</li>
+          <li>San Joaquín, Santiago</li>
+          <li>Chile</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ExpressServiceCL. Todos los derechos reservados.</span>
+      <span>Precios en CLP, IVA incluido.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', function(){
+      var isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var creditForm = document.getElementById('creditForm');
+    if (creditForm){
+      creditForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (!creditForm.checkValidity()){ creditForm.reportValidity(); return; }
+        var nombre = document.getElementById('cf-nombre').value.trim();
+        var rut = document.getElementById('cf-rut').value.trim();
+        var telefono = document.getElementById('cf-telefono').value.trim();
+        var correo = document.getElementById('cf-correo').value.trim();
+        var mensaje = document.getElementById('cf-mensaje').value.trim();
+        var subject = encodeURIComponent('Asesoría de créditos - ' + nombre);
+        var body = encodeURIComponent(
+          'Nombre: ' + nombre + '\n' +
+          'RUT: ' + rut + '\n' +
+          'Teléfono: ' + telefono + '\n' +
+          'Correo: ' + correo + '\n' +
+          'Consulta: ' + (mensaje || '(sin mensaje adicional)')
+        );
+        window.location.href = 'mailto:creditos@expressservicecl.cl?subject=' + subject + '&body=' + body;
+        var confirm = document.getElementById('creditFormConfirm');
+        confirm.hidden = false;
+        confirm.scrollIntoView({ block:'nearest' });
+      });
+    }
+
+    if ('IntersectionObserver' in window){
+      var els = document.querySelectorAll('.reveal');
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    }
+  })();
+</script>
+
+</body>
+</html>
