@@ -253,26 +253,6 @@
   }
   .map-link:hover{ background:#1e2329; color:var(--orange); }
 
-  /* Formulario de asesoría de créditos */
-  .credit-panel{
-    background:var(--bg-panel); border:1px solid var(--line); border-radius:var(--radius);
-    padding:34px 32px; margin-top:8px;
-  }
-  .credit-form{ display:grid; grid-template-columns:1fr 1fr; gap:18px 20px; margin-top:24px; }
-  .form-row{ display:flex; flex-direction:column; gap:6px; }
-  .form-row-full{ grid-column:1 / -1; }
-  .form-row label{ font-size:.82rem; font-weight:600; color:var(--ink); }
-  .form-row input, .form-row textarea{
-    font:inherit; padding:11px 13px; border:1.5px solid var(--line); border-radius:var(--radius-sm);
-    background:var(--bg); color:var(--ink); resize:vertical;
-  }
-  .form-row input:focus, .form-row textarea:focus{ border-color:var(--orange); outline:none; }
-  .form-hint{ margin:12px 0 0; font-size:.84rem; color:var(--text-dim); }
-  .form-confirm{
-    margin-top:18px; padding:14px 16px; background:var(--teal-soft); border:1px solid #bcd9dd;
-    border-radius:var(--radius-sm); color:var(--teal); font-size:.92rem; font-weight:600;
-  }
-  @media (max-width:640px){ .credit-form{ grid-template-columns:1fr; } }
   @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
 
   /* Footer */
@@ -482,45 +462,6 @@
     </div>
   </section>
 
-  <!-- ASESORÍA DE CRÉDITOS -->
-  <section id="asesoria-creditos" class="section-panel">
-    <div class="container reveal">
-      <span class="eyebrow">Créditos con ExpressServiceCL</span>
-      <h2 class="section-intro">Asesoría sobre tus créditos</h2>
-      <p class="section-intro">En ExpressServiceCL es muy importante que nuestros clientes tengan al día sus vehículos y sus deudas. Por eso, comunícate con un asesor para que te brindemos toda la información necesaria sobre tus créditos con nuestra empresa completando el siguiente formulario.</p>
-
-      <div class="credit-panel">
-        <form class="credit-form" id="creditForm" novalidate>
-          <div class="form-row">
-            <label for="cf-nombre">Nombre completo</label>
-            <input type="text" id="cf-nombre" name="nombre" autocomplete="name" required>
-          </div>
-          <div class="form-row">
-            <label for="cf-rut">RUT</label>
-            <input type="text" id="cf-rut" name="rut" placeholder="12.345.678-9" required>
-          </div>
-          <div class="form-row">
-            <label for="cf-telefono">Teléfono</label>
-            <input type="tel" id="cf-telefono" name="telefono" autocomplete="tel" required>
-          </div>
-          <div class="form-row">
-            <label for="cf-correo">Correo electrónico</label>
-            <input type="email" id="cf-correo" name="correo" autocomplete="email" required>
-          </div>
-          <div class="form-row form-row-full">
-            <label for="cf-mensaje">Cuéntanos tu consulta (opcional)</label>
-            <textarea id="cf-mensaje" name="mensaje" rows="3" placeholder="Ej: quiero saber el saldo pendiente de mi crédito por el motor N.° ..."></textarea>
-          </div>
-          <div class="form-row form-row-full">
-            <button type="submit" class="btn btn-primary">Solicitar asesoría</button>
-            <p class="form-hint">Un asesor de ExpressServiceCL te contactará dentro de 2 días hábiles al teléfono o correo indicado. También puedes escribirnos directamente a <a href="mailto:creditos@expressservicecl.cl" style="color:var(--orange-deep); font-weight:600;">creditos@expressservicecl.cl</a>.</p>
-          </div>
-        </form>
-        <p class="form-confirm" id="creditFormConfirm" role="status" hidden>Gracias. Preparamos tu solicitud en tu programa de correo: solo confírmala para enviarla a nuestro equipo de asesoría de créditos.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- POLITICAS -->
   <section id="politicas" class="section-panel">
     <div class="container reveal">
@@ -668,7 +609,6 @@
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#catalogo">Productos</a></li>
           <li><a href="#forum-de-pago">Forum de pago</a></li>
-          <li><a href="#asesoria-creditos">Asesoría de créditos</a></li>
           <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
         </ul>
       </div>
@@ -711,31 +651,6 @@
       });
     });
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    var creditForm = document.getElementById('creditForm');
-    if (creditForm){
-      creditForm.addEventListener('submit', function(e){
-        e.preventDefault();
-        if (!creditForm.checkValidity()){ creditForm.reportValidity(); return; }
-        var nombre = document.getElementById('cf-nombre').value.trim();
-        var rut = document.getElementById('cf-rut').value.trim();
-        var telefono = document.getElementById('cf-telefono').value.trim();
-        var correo = document.getElementById('cf-correo').value.trim();
-        var mensaje = document.getElementById('cf-mensaje').value.trim();
-        var subject = encodeURIComponent('Asesoría de créditos - ' + nombre);
-        var body = encodeURIComponent(
-          'Nombre: ' + nombre + '\n' +
-          'RUT: ' + rut + '\n' +
-          'Teléfono: ' + telefono + '\n' +
-          'Correo: ' + correo + '\n' +
-          'Consulta: ' + (mensaje || '(sin mensaje adicional)')
-        );
-        window.location.href = 'mailto:creditos@expressservicecl.cl?subject=' + subject + '&body=' + body;
-        var confirm = document.getElementById('creditFormConfirm');
-        confirm.hidden = false;
-        confirm.scrollIntoView({ block:'nearest' });
-      });
-    }
 
     if ('IntersectionObserver' in window){
       var els = document.querySelectorAll('.reveal');
